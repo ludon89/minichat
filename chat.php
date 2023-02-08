@@ -17,6 +17,25 @@
   <title>Minichat</title>
 </head>
 
+<?php
+// Récupération des données soumises par l'utilisateur (ici un message + pseudo)
+$pseudo = isset($_POST["pseudo"]) ? addslashes($_POST['pseudo']) : false;
+$message = isset($_POST['message']) ? addslashes($_POST['message']) : false;
+
+// Vérif s'il s'agit d'un utiliateur déja connecté
+if ($pseudo) {
+  $_SESSION["pseudo"] = $pseudo;
+}
+
+// Vérification de l'existence du tableau d'utilisateurs
+if (!isset($_SESSION["utilisateurs"])) {
+  $_SESSION["utilisateurs"] = array();
+}
+
+// Ajout des informations de l'utilisateur au tableau d'utilisateurs
+$_SESSION["utilisateurs"][] = array("pseudo" => $_SESSION["pseudo"], "message" => $message);
+?>
+
 <body>
   <header>
     <h1>Minichat Express</h1>
@@ -31,11 +50,11 @@
               <div class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
                 <i class="fas fa-angle-left"></i>
                 <!-- Récupération du pseudo saisi à l'accueil -->
-                <p class="mb-0 fw-bold">Bonjour, <?= $_POST["pseudo"] ?></p>
+                <p class="mb-0 fw-bold">Bonjour, <?= $_SESSION["pseudo"] ?></p>
                 <i class="fas fa-times"></i>
               </div>
               <div class="card-body">
-                <div class="d-flex flex-row justify-content-start mb-4">
+                <!-- <div class="d-flex flex-row justify-content-start mb-4">
                   <img src="assets/img/usrpic-placeholder.svg" alt="avatar 1" style="width: 45px; height: 100%;">
                   <div class="p-3 ms-3" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
                     <p class="small mb-0">Hello and thank you for visiting MDBootstrap. Please click the video below.
@@ -47,24 +66,34 @@
                     <p class="small mb-0">Thank you, I really like your product.</p>
                   </div>
                   <img src="assets/img/usrpic-placeholder.svg" alt="avatar 1" style="width: 45px; height: 100%;">
-                </div>
-                <div class="d-flex flex-row justify-content-start mb-4">
+                </div> -->
+                <!-- <div class="d-flex flex-row justify-content-start mb-4">
                   <img src="assets/img/usrpic-placeholder.svg" alt="avatar 1" style="width: 45px; height: 100%;">
                   <div class="p-3 ms-3" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
-                    <p class="small mb-0">...</p>
+                    <p class="small mb-0"></p>
                   </div>
-                </div>
-                <!-- Message utilisateur -->
+                </div> -->
 
-                <div class="d-flex flex-column">
-                  <p class="small mb-0"><?= $_POST["pseudo"] ?> dit...</p>
-                </div>
-                <div class="d-flex flex-row justify-content-start mb-4">
-                  <img src="assets/img/usrpic-placeholder.svg" alt="avatar 1" style="width: 45px; height: 100%;">
-                  <div class="p-3 ms-3" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
-                    <p class="small mb-0">...</p>
+                <!-- Conteneur message utilisateur -->
+
+                <?php
+                // Affichage des informations de tous les utilisateurs
+                foreach ($_SESSION["utilisateurs"] as $utilisateur) : ?>
+                  <div>
+                    <div class="d-flex flex-column">
+                      <!-- Nom de l'utilisateur -->
+                      <p class="small mb-0"><?= $utilisateur["pseudo"] ?> dit... </p>
+                    </div>
+                    <div class="d-flex flex-row justify-content-start mb-4">
+                      <img src="assets/img/usrpic-placeholder.svg" alt="avatar 1" style="width: 45px; height: 100%;">
+                      <div class="p-3 ms-3" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
+                        <!-- Message de l'utilisateur -->
+                        <p class="small mb-0"><?= $utilisateur["message"] ?></p>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                <?php endforeach ?>
+
 
                 <form action="" method="POST" class="form-outline">
                   <label class="form-label" for="message">Nouveau message :</label>
