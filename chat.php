@@ -71,7 +71,7 @@
                   <textarea name="message" class="form-control" id="textAreaExample" rows="4" placeholder="Type your message"></textarea>
                   <button type="submit">Envoyer</button>
                 </form>
-                <form action="index.php" method="POST">
+                <form action="logout.php" method="POST">
                   <button type="submit">Déconnexion</button>
                 </form>
               </div>
