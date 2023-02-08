@@ -1,3 +1,9 @@
+<!--
+  Créer une page d'accueil invitant l'utilisateur à saisir son pseudo. Une fois validé,
+  l'utilisateur sera dirigé vers la page de chat, dans laquelle, tous les messages des utilisateurs seront affichés.
+  À la suite, il est également possible d'envoyer un nouveau message via un champ de saisie.
+  Les utilisateurs doivent pouvoir quitter le chat par le biais d'un bouton de déconnexion et seront redirigés vers l'accueil .
+-->
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -20,10 +26,3 @@
 </body>
 
 </html>
-
-<!--
-  Créer une page d'accueil invitant l'utilisateur à saisir son pseudo. Une fois validé,
-  l'utilisateur sera dirigé vers la page de chat, dans laquelle, tous les messages des utilisateurs seront affichés.
-  À la suite, il est également possible d'envoyer un nouveau message via un champ de saisie.
-  Les utilisateurs doivent pouvoir quitter le chat par le biais d'un bouton de déconnexion et seront redirigés vers l'accueil .
- -->
