@@ -52,11 +52,9 @@
                     <p class="small mb-0">...</p>
                   </div>
                 </div>
-
                 <!-- Message utilisateur -->
 
                 <div class="d-flex flex-column">
-
                   <p class="small mb-0"><?= $_POST["pseudo"] ?> dit...</p>
                 </div>
                 <div class="d-flex flex-row justify-content-start mb-4">
@@ -66,11 +64,12 @@
                   </div>
                 </div>
 
-
                 <form action="" method="POST" class="form-outline">
                   <label class="form-label" for="message">Nouveau message :</label>
                   <textarea name="message" class="form-control" id="textAreaExample" rows="4" placeholder="Type your message"></textarea>
                   <button type="submit">Envoyer</button>
+                </form>
+                <form action="index.php" method="POST">
                   <button type="submit">Déconnexion</button>
                 </form>
               </div>
