@@ -7,8 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ==================== CSS Bootstrap ==================== -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
   <!-- ==================== CSS ==================== -->
   <link rel="stylesheet" href="assets/css/style.css">
@@ -18,16 +17,7 @@
 
 <body>
   <header>
-    <nav>
-      <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Chat</a>
-        </li>
-      </ul>
-    </nav>
+    <h1>Minichat Express</h1>
   </header>
 
   <main>
@@ -36,11 +26,10 @@
         <div class="row d-flex justify-content-center">
           <div class="col-md-8 col-lg-6 col-xl-4">
             <div class="card" id="chat1" style="border-radius: 15px;">
-              <div
-                class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0"
-                style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+              <div class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
                 <i class="fas fa-angle-left"></i>
-                <p class="mb-0 fw-bold">Live chat</p>
+                <!-- Récupération du pseudo saisi à l'accueil -->
+                <p class="mb-0 fw-bold">Bonjour, <?= $_POST["pseudo"] ?></p>
                 <i class="fas fa-times"></i>
               </div>
               <div class="card-body">
@@ -63,11 +52,27 @@
                     <p class="small mb-0">...</p>
                   </div>
                 </div>
-                <div class="form-outline">
-                  <textarea class="form-control" id="textAreaExample" rows="4"
-                    placeholder="Type your message"></textarea>
-                  <label class="form-label" for="textAreaExample">Type your message</label>
+
+                <!-- Message utilisateur -->
+
+                <div class="d-flex flex-column">
+
+                  <p class="small mb-0"><?= $_POST["pseudo"] ?> dit...</p>
                 </div>
+                <div class="d-flex flex-row justify-content-start mb-4">
+                  <img src="assets/img/usrpic-placeholder.svg" alt="avatar 1" style="width: 45px; height: 100%;">
+                  <div class="p-3 ms-3" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
+                    <p class="small mb-0">...</p>
+                  </div>
+                </div>
+
+
+                <form action="" method="POST" class="form-outline">
+                  <label class="form-label" for="message">Nouveau message :</label>
+                  <textarea name="message" class="form-control" id="textAreaExample" rows="4" placeholder="Type your message"></textarea>
+                  <button type="submit">Envoyer</button>
+                  <button type="submit">Déconnexion</button>
+                </form>
               </div>
             </div>
           </div>
@@ -77,9 +82,7 @@
   </main>
 
   <!-- ==================== JS Bootstrap ==================== -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
   <!-- ==================== JS ==================== -->
   <script src="assets/js/main.js"></script>
