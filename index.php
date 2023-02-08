@@ -4,6 +4,8 @@
   À la suite, il est également possible d'envoyer un nouveau message via un champ de saisie.
   Les utilisateurs doivent pouvoir quitter le chat par le biais d'un bouton de déconnexion et seront redirigés vers l'accueil .
 -->
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -25,8 +27,6 @@
 <body>
 
   <?php
-
-  session_start();
 
   if (!empty($_POST)) {
     $pseudo = $_POST["pseudo"];
