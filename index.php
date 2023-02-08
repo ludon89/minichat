@@ -25,6 +25,9 @@
 <body>
 
   <?php
+
+  session_start();
+
   if (!empty($_POST)) {
     $pseudo = $_POST["pseudo"];
   }
